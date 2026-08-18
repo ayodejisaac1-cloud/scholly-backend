@@ -1,0 +1,37 @@
+# Scholly - School Accounting System
+
+A comprehensive school accounting system built with React, FastAPI, and PostgreSQL.
+
+## Features
+
+- **Role-Based Access Control**: Admin and Proprietor roles with different permissions
+- **Student Management**: Add, edit, delete students with tuition plans
+- **Tuition Installments**: Up to 5 installments per term with automated late fees
+- **Payment Tracking**: Record payments via cash, bank transfer, card, USSD, mobile money
+- **Paystack Integration**: Online payment acceptance
+- **Financial Reports**: Student financial status, income reports, expense tracking, profit/loss
+- **Dark Mode Support**: Clean modern UI with dark mode
+- **Automated Reminders**: Email notifications for upcoming/due payments
+
+## Tech Stack
+
+- **Frontend**: React, Tailwind CSS, Recharts, React Query
+- **Backend**: FastAPI, SQLAlchemy, PostgreSQL
+- **Authentication**: JWT with bcrypt
+- **Payment**: Paystack API
+
+## Quick Start
+
+### Using Docker
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd scholly
+
+# Start all services
+docker-compose up -d
+
+# Access the application
+# Frontend: http://localhost:5173
+# Backend API: http://localhost:8000
