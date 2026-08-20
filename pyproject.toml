@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "scholly-backend"
+version = "1.0.0"
+description = "School Accounting System Backend"
+authors = ["Your Name <your-email@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"  # ✅ This forces Python 3.11
+fastapi = "0.104.1"
+uvicorn = {version = "0.24.0", extras = ["standard"]}
+sqlalchemy = "2.0.23"
+psycopg2-binary = "2.9.9"
+python-jose = {version = "3.3.0", extras = ["cryptography"]}
+passlib = {version = "1.7.4", extras = ["bcrypt"]}
+python-multipart = "0.0.6"
+pydantic = "2.5.0"
+pydantic-settings = "2.1.0"
+python-dotenv = "1.0.0"
+alembic = "1.12.1"
+requests = "2.31.0"
+email-validator = "2.1.0"
+jinja2 = "3.1.2"
+bcrypt = "4.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
