@@ -337,54 +337,54 @@ class EmailService:
         return self.send_email(to_email, subject, html_content, text_content)
 
     def send_school_approval_email(self, to_email: str, school_name: str, status: str) -> bool:
-    """Send school approval/rejection email"""
-    subject = f"School {status.title()}: {school_name}"
-    
-    status_emoji = "✅" if status == "active" else "❌"
-    status_message = "approved and activated" if status == "active" else "suspended"
-    
-    html_content = f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-            body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
-            .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
-            .header {{ background: #2563EB; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; }}
-            .header h1 {{ color: white; margin: 0; }}
-            .content {{ padding: 30px; background: #f9f9f9; border-radius: 0 0 10px 10px; }}
-            .button {{ display: inline-block; padding: 12px 30px; background: #2563EB; color: white; text-decoration: none; border-radius: 5px; margin: 20px 0; }}
-            .footer {{ text-align: center; padding: 20px; color: #666; font-size: 12px; }}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <h1>🏫 Scholly</h1>
+        """Send school approval/rejection email"""
+        subject = f"School {status.title()}: {school_name}"
+        
+        status_emoji = "✅" if status == "active" else "❌"
+        status_message = "approved and activated" if status == "active" else "suspended"
+        
+        html_content = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+                .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+                .header {{ background: #2563EB; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; }}
+                .header h1 {{ color: white; margin: 0; }}
+                .content {{ padding: 30px; background: #f9f9f9; border-radius: 0 0 10px 10px; }}
+                .button {{ display: inline-block; padding: 12px 30px; background: #2563EB; color: white; text-decoration: none; border-radius: 5px; margin: 20px 0; }}
+                .footer {{ text-align: center; padding: 20px; color: #666; font-size: 12px; }}
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h1>🏫 Scholly</h1>
+                </div>
+                <div class="content">
+                    <h2>{status_emoji} School {status.title()}</h2>
+                    <p>Your school <strong>{school_name}</strong> has been {status_message}.</p>
+                    {'''
+                        <p>You can now log in and start using all the features of Scholly!</p>
+                        <div style="text-align: center;">
+                            <a href="{settings.FRONTEND_URL}/login" class="button">Login to Dashboard</a>
+                        </div>
+                        ''' if status == "active" else '''
+                        <p>If you have any questions, please contact support.</p>
+                        '''}
+                </div>
+                <div class="footer">
+                    <p>&copy; 2024 Scholly. All rights reserved.</p>
+                    <p>This email was sent to {to_email}</p>
+                </div>
             </div>
-            <div class="content">
-                <h2>{status_emoji} School {status.title()}</h2>
-                <p>Your school <strong>{school_name}</strong> has been {status_message}.</p>
-                {'''
-                    <p>You can now log in and start using all the features of Scholly!</p>
-                    <div style="text-align: center;">
-                        <a href="{settings.FRONTEND_URL}/login" class="button">Login to Dashboard</a>
-                    </div>
-                    ''' if status == "active" else '''
-                    <p>If you have any questions, please contact support.</p>
-                    '''}
-            </div>
-            <div class="footer">
-                <p>&copy; 2024 Scholly. All rights reserved.</p>
-                <p>This email was sent to {to_email}</p>
-            </div>
-        </div>
-    </body>
-    </html>
-    """
-    
-    return self.send_email(to_email, subject, html_content)
-    
+        </body>
+        </html>
+        """
+        
+        return self.send_email(to_email, subject, html_content)
+
     def send_test_email(self, to_email: str) -> bool:
         """Send a test email to verify configuration"""
         subject = "Scholly Email Test"
