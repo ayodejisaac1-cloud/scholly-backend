@@ -371,9 +371,9 @@ class EmailService:
                     <div style="text-align: center;">
                         <a href="{settings.FRONTEND_URL}/login" class="button">Login to Dashboard</a>
                     </div>
-                    """ or """
+                    ''' if status == "active" else '''
                     <p>If you have any questions, please contact support.</p>
-                    """}
+                    '''}
                 </div>
                 <div class="footer">
                     <p>&copy; 2024 Scholly. All rights reserved.</p>
